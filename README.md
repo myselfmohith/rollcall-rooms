@@ -36,7 +36,9 @@ Created a **package.json** file in the root directory and written the following 
 
 ```json
 {
-    ...,
+    "name": "rollcall-rooms",
+    "version": "1.0.0",
+    "main": "",
     "scripts": {
         "start": "npm start --prefix server",
         "install-client": "cd client && npm install && npm run build && cd ..",
