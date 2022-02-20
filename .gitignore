@@ -1,0 +1,14 @@
+.vscode
+node_modules
+
+# Client
+build
+
+# Server
+.env
+rollcall.log
+
+
+# Extras
+servertest
+dummydata.txt

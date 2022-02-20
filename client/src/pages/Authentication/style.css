@@ -1,0 +1,87 @@
+#auth-body {
+  width: 100vw;
+  max-width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 15px 0;
+  overflow: auto;
+}
+
+#auth {
+  width: 500px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#auth .brand-name {
+  color: var(--main-color);
+  margin-bottom: 10px;
+}
+
+#auth .brand-description {
+  color: var(--black-shade-3);
+  opacity: 0.9;
+  text-align: center;
+}
+
+#auth .container {
+  width: 100%;
+  background: var(--white);
+  padding: 15px 25px;
+  border-radius: 5px;
+  margin-top: 10px;
+  box-shadow: var(--container-shadow);
+
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  animation: container-in 400ms forwards;
+}
+
+@keyframes container-in {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+#auth .container input[name="emoji"] {
+  width: 100px;
+  height: 100px;
+  margin: 15px auto 5px;
+  padding: 0;
+  text-align: center;
+  font-size: 50px;
+  border-radius: 50%;
+  border: solid 2px transparent;
+  cursor: default;
+}
+
+#auth .container input[name="emoji"]::placeholder {
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+#auth .container input[name="emoji"]:focus {
+  border: solid 2px var(--main-color);
+}
+
+#auth .container .goto-link {
+  align-self: flex-end;
+  font-size: 12px;
+  margin: 2px 0;
+}
+
+#auth .container .goto-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#auth .container button[type="submit"] {
+  align-self: flex-end;
+}

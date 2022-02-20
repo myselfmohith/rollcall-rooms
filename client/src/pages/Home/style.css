@@ -1,0 +1,96 @@
+.greet {
+  background: var(--white);
+  box-shadow: var(--container-shadow);
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.greet .user-name {
+  color: var(--main-color);
+}
+
+.greet .user-uid {
+  color: var(--black-shade-3);
+}
+
+.room-card {
+  width: 100%;
+  background: var(--white);
+  box-shadow: var(--container-shadow);
+  position: relative;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.join-create-model {
+  min-height: 150px;
+  border: dashed 1px var(--black-shade-3);
+  opacity: 0.8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.join-create-model:active {
+  opacity: 1;
+  box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.room-bg {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: var(--black-shade-3);
+}
+
+.room-admin-icon {
+  font-size: 35px;
+  margin: -50px 0;
+  position: absolute;
+  top: 170px;
+  left: 10px;
+  width: 50px;
+  height: 50px;
+  background: var(--white-shade-2);
+  box-shadow: var(--container-shadow);
+  border-radius: 50%;
+}
+
+.room-name {
+  margin: 20px 10px auto;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.room-description-clip {
+  color: var(--black-shade-2);
+  font-size: 14px;
+  margin: 5px 10px 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.admin-name {
+  margin: 5px 10px;
+  color: var(--black-shade-3);
+  font-size: 13px;
+}
+
+/* MODELS */
+
+
+
+.join-create-room-button{
+  align-self: flex-end;
+  float: right;
+}
+
+/* JOIN ROOM */
