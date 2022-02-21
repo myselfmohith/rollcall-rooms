@@ -1,4 +1,4 @@
-export const SOCKET_URL = "/";
+export const SOCKET_URL = "http://localhost:5000/";
 
 export function FETCH(route = "/api", method = "GET", token = null, body = null) {
     const authHeader = { 'Authorization': `BEARER ${token}` };
@@ -13,5 +13,5 @@ export function FETCH(route = "/api", method = "GET", token = null, body = null)
             body: JSON.stringify(body)
         }
     }
-    return fetch(`/api${route}`, linkHeaders[method]).then(res => res.json());
+    return fetch(`${SOCKET_URL}api${route}`, linkHeaders[method]).then(res => res.json());
 }

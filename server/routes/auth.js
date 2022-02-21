@@ -1,14 +1,15 @@
 const route = require('express').Router();
 const { User } = require("../models/model");
 const { signToken } = require("../middleware/authentication");
-// TODO: HASH PASSWORDS
+const { encrypt, decrypt } = require("../utils/cipher");
 
 
 route.post("/login", (req, res) => {
     const { uid, password } = req.body;
-    User.findOne({ uid, password })
+    User.findOne({ uid })
         .then(user => {
-            if (!user) throw { message: "CHECK THE UID AND PASSWORD" }
+            if (!user) throw { message: "USER NOT FOUND" }
+            if (password !== decrypt(user.password)) throw { message: "CHECK YOUR PASSWORD" };
             const tokenWithData = signToken({ ...user._doc, password: undefined, rooms: undefined });
             return res.json({ response: 'ok', payload: tokenWithData });
         })
@@ -21,7 +22,7 @@ route.post("/signup", (req, res) => {
     // TODO: VALIDATE EMOJI
     const user = new User({
         uid,
-        password,
+        password: encrypt(password),
         emoji,
         fname,
         lname
@@ -37,10 +38,11 @@ route.post("/signup", (req, res) => {
 
 route.post("/changepassword", (req, res) => {
     const { uid, password, newPassword } = req.body;
-    User.findOne({ uid, password })
+    User.findOne({ uid })
         .then(user => {
-            if (!user) throw { message: "CHECK THE UID AND PASSWORD" }
-            user.password = newPassword;
+            if (!user) throw { message: "USER NOT FOUND" }
+            if (password !== decrypt(user.password)) throw { message: "CHECK YOUR PASSWORD" };
+            user.password = encrypt(newPassword);
             return user.save();
         })
         .then(() => res.json({ response: 'ok' }))

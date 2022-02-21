@@ -17,6 +17,47 @@
   color: var(--black-shade-3);
 }
 
+.rooms-container-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rooms-container-header > button {
+  background: none;
+  border: none;
+  outline: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.rooms-container-header > button:focus-within > ul {
+  display: unset;
+}
+
+.rooms-container-header > button > ul {
+  display: none;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--white);
+  box-shadow: var(--container-shadow);
+  list-style: none;
+  padding: 5px 0;
+  width: 150px;
+  text-align: left;
+}
+
+.rooms-container-header > button > ul > li {
+  font-size: 14px;
+  padding: 8px;
+}
+
+.rooms-container-header > button > ul > li:hover {
+  background: var(--white-shade-2);
+}
+
 .room-card {
   width: 100%;
   background: var(--white);
@@ -25,21 +66,6 @@
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-}
-
-.join-create-model {
-  min-height: 150px;
-  border: dashed 1px var(--black-shade-3);
-  opacity: 0.8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.join-create-model:active {
-  opacity: 1;
-  box-shadow: 0 0 3px 5px rgba(0, 0, 0, 0.1);
 }
 
 .room-bg {
@@ -51,15 +77,23 @@
 
 .room-admin-icon {
   font-size: 35px;
-  margin: -50px 0;
   position: absolute;
-  top: 170px;
+  top: 125px;
   left: 10px;
   width: 50px;
   height: 50px;
   background: var(--white-shade-2);
   box-shadow: var(--container-shadow);
   border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.admin-icon {
+  position: absolute;
+  font-size: 35px;
+  top: 95px;
+  left: 12px;
 }
 
 .room-name {
@@ -86,9 +120,7 @@
 
 /* MODELS */
 
-
-
-.join-create-room-button{
+.join-create-room-button {
   align-self: flex-end;
   float: right;
 }

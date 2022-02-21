@@ -153,39 +153,6 @@ nav button:focus-within .menu {
   display: unset;
 }
 
-/* PAGE LOADER */
-#page-loader {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  display: block;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #c0c0c0bb;
-  z-index: 1;
-}
-
-#loader-bar {
-  vertical-align: bottom;
-  --width-loader: calc(100% - 40vw);
-  background: var(--main-color);
-  width: var(--width-loader);
-  margin: 0 auto;
-  height: 5px;
-  animation: loader-animation 1.5s infinite alternate ease-in-out;
-}
-
-@keyframes loader-animation {
-  from {
-    width: 40%;
-  }
-  to {
-    width: 110%;
-  }
-}
-
 /* Model */
 
 #model {
@@ -201,6 +168,7 @@ nav button:focus-within .menu {
   display: grid;
   place-items: center;
   animation: model-opacity 400ms forwards;
+  z-index: 999;
 }
 
 @keyframes model-opacity {

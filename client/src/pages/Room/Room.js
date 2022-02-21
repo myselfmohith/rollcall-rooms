@@ -91,7 +91,7 @@ export default function Room() {
         if (!subscribed) return;
         setRoom(res.payload);
         setLoading(false);
-        document.title = user.uid + " in " + res.payload.room_name;
+        document.title = user.fname + " in " + res.payload.room_name;
         document.querySelector('link[rel*="icon"]').href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${user.emoji}</text></svg>`
       })
       .catch(err => {
@@ -123,7 +123,7 @@ export default function Room() {
           {room.admin._id === user._id && <button onClick={deleteRoom} className='default-button' >  Delete Room</button>}
         </div>
 
-        <h3>Participants</h3>
+        <h3>Participants ({room.participants.length})</h3>
         <div className="cards-container">
           {
             room.participants.sort().map(participant =>

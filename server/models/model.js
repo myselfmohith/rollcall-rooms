@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
     uid: { type: Number, required: true, unique: true },
-    emoji: { type: String, required: true, default: "😁" },
+    emoji: { type: String, required: true },
     fname: { type: String, required: true },
     lname: String,
     password: { type: String, required: true },

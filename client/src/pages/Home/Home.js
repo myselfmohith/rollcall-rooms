@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import { USERCONTEXT } from "../../App";
-import { AiOutlinePlus } from 'react-icons/ai';
 import Roomcard from "./components/Roomcard";
+import { AiOutlineMore } from 'react-icons/ai'
 
 // MODELS
 import JoinRoom from "./components/JoinRoom";
@@ -12,6 +12,7 @@ import { FETCH } from "../../utils";
 export default function Home() {
   const [user, setUser, setModelElement] = useContext(USERCONTEXT);
   const [rooms, setRooms] = useState([]);
+  const [sortRooms, setSortRooms] = useState("Z-A");
 
 
   useEffect(() => {
@@ -19,7 +20,7 @@ export default function Home() {
       .then(res => {
         if (res.response === 'fail') throw res.message;
         setRooms(res.payload.rooms);
-        document.title = user.uid;
+        document.title = user.fname;
         document.querySelector('link[rel*="icon"]').href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${user.emoji}</text></svg>`
       })
       .catch(err => {
@@ -30,6 +31,14 @@ export default function Home() {
 
   const createRoom = () => setModelElement(() => <CreateRoom user={user} setRooms={setRooms} modelTitle="Create Room" closeModel={() => setModelElement(null)} />);
   const joinRoom = () => setModelElement(() => <JoinRoom user={user} setRooms={setRooms} modelTitle="Join Room" closeModel={() => setModelElement(null)} />);
+  const toggleSort = () => setSortRooms(pre => {
+    if (pre === "A-Z") return "Z-A";
+    return "A-Z";
+  })
+  const sortFunction = (a, b) => {
+    if (sortRooms !== "A-Z") return a.room_name.toUpperCase() > b.room_name.toUpperCase() ? 1 : -1;
+    return a.room_name.toUpperCase() > b.room_name.toUpperCase() ? -1 : 1;
+  }
 
   return (
     <>
@@ -39,36 +48,29 @@ export default function Home() {
       </div>
       <div className="grids-page-container padding-page">
 
-
-        <h4>Rooms as Admin</h4>
+        <div className="rooms-container-header">
+          <h3>Rooms</h3>
+          <button> <AiOutlineMore size="20px" />
+            <ul>
+              <li onClick={toggleSort}>Sort {sortRooms}</li>
+              <li onClick={joinRoom} >Join Room</li>
+              <li onClick={createRoom} >Create Room</li>
+            </ul>
+          </button>
+        </div>
         <div className="cards-container">
-          <div onClick={createRoom} className="room-card join-create-model"><AiOutlinePlus size="25px" /> CREATE ROOM</div>
-          {rooms.filter(room => room.admin._id === user._id).map(room => <Roomcard
+          {rooms.sort(sortFunction).map(room => <Roomcard
             adminEmoji={room.admin.emoji}
-            adminName="you"
+            adminName={room.admin.fname + " " + (room.admin.lname || "")}
             roomId={room._id}
             bgImage={room.bgImgUrl}
             roomDescription={room.description}
             roomName={room.room_name}
             key={room._id}
+            isAdmin={room.admin._id === user._id}
           />)}
         </div>
-        <br />
 
-
-        <h4>Rooms as participant</h4>
-        <div className="cards-container ">
-          <div onClick={joinRoom} className="room-card join-create-model"><AiOutlinePlus size="25px" /> JOIN ROOM</div>
-          {rooms.filter(room => room.admin._id !== user._id).map(room => <Roomcard
-            adminEmoji={room.admin.emoji}
-            adminName={room.admin.fname + (room.admin.lname || "")}
-            roomId={room._id}
-            bgImage={room.bgImgUrl}
-            roomDescription={room.description}
-            roomName={room.room_name}
-            key={room._id}
-          />)}
-        </div>
       </div>
     </>
   )
