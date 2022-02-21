@@ -30,7 +30,7 @@ export default function AdminRollcall({ room_id, rollcall, allParticipants, setR
     function updateQR(qrText) {
         QrCode.toDataURL(qrText, { width: 1000 }, (err, url) => {
             setQrCodeUrl(url);
-            externalWindow.current && externalWindow.current.document.querySelector("img").setAttribute("src",url);
+            externalWindow.current && externalWindow.current.document.querySelector("img").setAttribute("src", url);
         })
     }
 
@@ -87,6 +87,7 @@ export default function AdminRollcall({ room_id, rollcall, allParticipants, setR
                             :
                             <b>Closed</b>
                     }
+                    <p>Scanned by {attendees.length} participants</p>
                     <button onClick={showAbsentees} className="default-button">Convert to CSV</button>
                     <button title="This will just creates new rollcall removes previous" onClick={() => setRollCall(null)} className="default-button">{timer > 0 ? "Replace With New" : "Create New"}</button>
                 </div>
