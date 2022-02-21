@@ -34,7 +34,7 @@ export default function ChangePass({ goToPage }) {
   return (
     <form onSubmit={handleSubmit} className='container'>
       <h2>Change Password</h2>
-      <input required type="text" name="uid" className="default-input" placeholder='Your unique id' />
+      <input pattern='\d{10}' title='Your uid should of length 10 numbers' required type="text" name="uid" className="default-input" placeholder='Your unique id' />
       <input required type="password" name="old-password" className="default-input" placeholder='Your old password' />
       <input required type="password" name="new-password" className="default-input" placeholder='Your new password' />
       <input required type="password" name="retype-password" className="default-input" placeholder='Retype new password' />

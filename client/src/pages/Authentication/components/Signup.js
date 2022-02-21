@@ -39,7 +39,7 @@ export default function Signup({ goToPage }) {
     <form onSubmit={handleSubmit} className='container'>
       <h2>Sign Up</h2>
       <input required className='default-input' title='Your Emoticon' autoComplete='off' type="text" name="emoji" placeholder='Your emoji' />
-      <input required className='default-input' type="text" autoComplete='off' name="uid" placeholder=' Your unique id*' />
+      <input pattern='\d{10}' title='Your uid should of length 10 numbers' required className='default-input' type="text" autoComplete='off' name="uid" placeholder=' Your unique id*' />
       <input required className='default-input' type="text" name="fname" placeholder='Your First Name*' />
       <input className='default-input' type="text" name="lname" placeholder='Your Last Name' />
       <input required className='default-input' type="password" name="password" placeholder='Your password*' />

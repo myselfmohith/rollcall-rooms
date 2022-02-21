@@ -29,7 +29,7 @@ export default function Login({ goToPage }) {
   return (
     <form onSubmit={handleSubmit} className='container'>
       <h2>Log in</h2>
-      <input required className="default-input" type="text" name="uid" placeholder='Your unique id' />
+      <input pattern='\d{10}' title='Your uid should of length 10 numbers' required className="default-input" type="text" name="uid" placeholder='Your unique id' />
       <input required className="default-input" type="password" name="password" placeholder='Your password' />
       <p className='red-error-text'>{error}&nbsp;</p>
       <button className='default-button' type="submit" name="login-button">Log In</button>
