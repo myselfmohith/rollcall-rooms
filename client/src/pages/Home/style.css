@@ -1,7 +1,8 @@
 .greet {
   background: var(--white);
   box-shadow: var(--container-shadow);
-  height: 150px;
+  min-height: 150px;
+  padding: 10px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

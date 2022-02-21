@@ -1,0 +1,36 @@
+{
+    "short_name": "Rollcall",
+    "name": "Rollcall Rooms",
+    "description": "RollCall Rooms is easy way to take attendance with in less time. We generate a random QR CODE for every 15 or n seconds, users can scan to qr to record their presence in the room.",
+    "start_url": "./",
+    "scope": "./",
+    "background_color": "#f3f7f7",
+    "theme_color": "#3aafa9",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/icons/android-launchericon-512-512.png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/icons/android-launchericon-192-192.png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/icons/android-launchericon-144-144.png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "/icons/android-launchericon-96-96.png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "/icons/android-launchericon-72-72.png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "/icons/android-launchericon-48-48.png",
+            "sizes": "48x48"
+        }
+    ]
+}

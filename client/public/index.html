@@ -4,15 +4,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖐️</text></svg>" type="image/x-icon">
+  <link rel="shortcut icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖐️</text></svg>"
+    type="image/x-icon">
   <meta name="description"
     content="RollCall Rooms is easy way to take attendance with in less time. We generate a random QR CODE for every 15seconds, users can scan to qr to record their presence in the room" />
   <meta name="keywords" content="rollcall,rooms,qr,attendance,attendees,participants" />
+  <meta name="theme-color" content="#319197">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🖐️</text></svg>">
   <title>ROLLCALL ROOMS</title>
 </head>
 
 <body>
   <div id="root"></div>
+
+
+  <script>
+    (async () => {
+      if ('serviceWorker' in navigator) {
+        try {
+          serviceWorker = await navigator.serviceWorker.register('./sw.js');
+        } catch (error) {
+          serviceWorker = null;
+        }
+      }
+    })();
+  </script>
 </body>
 
 </html>

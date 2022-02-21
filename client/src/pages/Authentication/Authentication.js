@@ -1,5 +1,5 @@
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // COMPONENTS
 import Login from "./components/Login";
@@ -22,6 +22,10 @@ export default function Authentication() {
         return <h1>default</h1>
     }
   }
+
+  useEffect(() => {
+    document.querySelector('meta[name="theme-color"]').content = "#3aafa9";
+  }, [])
 
   return (
     <div id="auth-body">
