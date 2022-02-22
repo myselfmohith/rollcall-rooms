@@ -24,7 +24,7 @@ export default function Authentication() {
   }
 
   useEffect(() => {
-    document.querySelector('meta[name="theme-color"]').content = "#3aafa9";
+    document.querySelector('meta[name="theme-color"]').content = "#f3f7f7";
   }, [])
 
   return (
