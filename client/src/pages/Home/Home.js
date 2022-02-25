@@ -13,6 +13,7 @@ export default function Home() {
   const [user, setUser, setModelElement] = useContext(USERCONTEXT);
   const [rooms, setRooms] = useState([]);
   const [sortRooms, setSortRooms] = useState("Z-A");
+  const [requestLoader, setRequestLoader] = useState(true);
 
 
   useEffect(() => {
@@ -20,6 +21,7 @@ export default function Home() {
       .then(res => {
         if (res.response === 'fail') throw res.message;
         setRooms(res.payload.rooms);
+        setRequestLoader(false);
         document.title = user.fname;
         document.querySelector('meta[name="theme-color"]').content = "#39424e";
         document.querySelector('link[rel*="icon"]').href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${user.emoji}</text></svg>`
@@ -27,7 +29,6 @@ export default function Home() {
       .catch(err => {
         setUser(null);
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const createRoom = () => setModelElement(() => <CreateRoom user={user} setRooms={setRooms} modelTitle="Create Room" closeModel={() => setModelElement(null)} />);
@@ -60,7 +61,7 @@ export default function Home() {
           </button>
         </div>
         <div className="cards-container">
-          {rooms.sort(sortFunction).map(room => <Roomcard
+          {requestLoader ? <h1>Loading Rooms</h1> : rooms.sort(sortFunction).map(room => <Roomcard
             adminEmoji={room.admin.emoji}
             adminName={room.admin.fname + " " + (room.admin.lname || "")}
             roomId={room._id}

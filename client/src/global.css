@@ -193,6 +193,7 @@ nav button:focus-within .menu {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  transition: height 400ms;
 }
 
 #model-container::-webkit-scrollbar {

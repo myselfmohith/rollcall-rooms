@@ -2,8 +2,13 @@ import React from 'react';
 import { AiOutlineClose } from 'react-icons/ai'
 
 export default function Model({ element }) {
+    function clickHandle(event) {
+        if(!event.target.closest("#model-container")){
+            element.props.closeModel();
+        }
+    }
     return (
-        <div id="model">
+        <div onClick={clickHandle} id="model">
             <div id="model-container">
                 <div id="model-header">
                     <h3>{element.props.modelTitle}</h3>
