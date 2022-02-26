@@ -17,13 +17,13 @@ export default function Home() {
 
 
   useEffect(() => {
+    document.querySelector('meta[name="theme-color"]').content = "#39424e";
     FETCH("/my", "GET", user.jwt_token, null)
       .then(res => {
         if (res.response === 'fail') throw res.message;
         setRooms(res.payload.rooms);
         setRequestLoader(false);
         document.title = user.fname;
-        document.querySelector('meta[name="theme-color"]').content = "#39424e";
         document.querySelector('link[rel*="icon"]').href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${user.emoji}</text></svg>`
       })
       .catch(err => {
