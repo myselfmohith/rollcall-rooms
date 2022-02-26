@@ -127,3 +127,31 @@
 }
 
 /* JOIN ROOM */
+
+/* LOADING-CARD */
+.loading-card * {
+  background: linear-gradient(
+    90deg,
+    rgb(199, 199, 199) 35%,
+    rgb(212, 212, 212) 50%,
+    rgb(199, 199, 199) 65%
+  );
+  background-size: 300% 100%;
+  animation: loading-gradient 1s infinite;
+}
+
+.loading-card .room-name {
+  width: 70%;
+  height: 20px;
+  margin: 30px 10px auto;
+}
+
+.loading-card .admin-name {
+  width: 40%;
+  height: 15px;
+}
+
+.loading-card .room-description-clip{
+  height: 40px;
+  margin-right: 10px;
+}

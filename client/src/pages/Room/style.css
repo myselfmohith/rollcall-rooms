@@ -150,3 +150,40 @@
 .input-file-for-qr {
   display: none;
 }
+
+/* LADING */
+.loading-page .load {
+  background: linear-gradient(
+    90deg,
+    rgb(199, 199, 199) 35%,
+    rgb(212, 212, 212) 50%,
+    rgb(199, 199, 199) 65%
+  );
+  background-size: 300% 100%;
+  animation: loading-gradient 1s infinite;
+}
+
+.loading-page h2 {
+  width: 40% !important;
+  height: 25px;
+}
+
+.loading-page span {
+  width: 30%;
+  height: 20px;
+}
+
+.loading-page p {
+  height: 50px;
+}
+
+.loading-page h4 {
+  width: 60%;
+  height: 25px;
+}
+
+.participant-card.loading-page p {
+  width: 40%;
+  margin-top: 5px;
+  height: 15px;
+}

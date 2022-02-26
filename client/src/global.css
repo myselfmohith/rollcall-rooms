@@ -261,3 +261,14 @@ nav button:focus-within .menu {
   color: inherit;
   display: block;
 }
+
+
+@keyframes loading-gradient {
+  from {
+      background-position: 100% 0%;
+  }
+
+  to {
+      background-position: 0% 0%;
+  }
+}

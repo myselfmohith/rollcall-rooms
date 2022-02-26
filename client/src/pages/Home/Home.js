@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import "./style.css";
 import { USERCONTEXT } from "../../App";
-import Roomcard from "./components/Roomcard";
+import Roomcard, { DummyCard } from "./components/Roomcard";
 import { AiOutlineMore } from 'react-icons/ai'
 
 // MODELS
@@ -27,6 +27,7 @@ export default function Home() {
         document.querySelector('link[rel*="icon"]').href = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>${user.emoji}</text></svg>`
       })
       .catch(err => {
+        setRequestLoader(false);
         setUser(null);
       });
   }, [])
@@ -61,7 +62,10 @@ export default function Home() {
           </button>
         </div>
         <div className="cards-container">
-          {requestLoader ? <h1>Loading Rooms</h1> : rooms.sort(sortFunction).map(room => <Roomcard
+
+          {requestLoader ? <>
+            {Array.from(Array(4).keys()).map(arr => <DummyCard key={arr} />)}
+          </> : rooms.sort(sortFunction).map(room => <Roomcard
             adminEmoji={room.admin.emoji}
             adminName={room.admin.fname + " " + (room.admin.lname || "")}
             roomId={room._id}

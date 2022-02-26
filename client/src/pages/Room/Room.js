@@ -9,6 +9,7 @@ import { FETCH } from '../../utils';
 import EditRoom from './components/EditRoom';
 import RollCall from './components/RollCall';
 import ParticipantCard from './components/ParticipantCard';
+import DummyPage from './components/DummyPage';
 
 export default function Room() {
   const navigate = useNavigate();
@@ -105,7 +106,7 @@ export default function Room() {
     };
   }, [])
 
-  if (loading) return <p></p>
+  if (loading) return <DummyPage />
   return (
     <>
       <div className="padding-page room-page-info">
