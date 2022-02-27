@@ -1,5 +1,5 @@
 // Service Worker Version 0.1
-const CACHE_NAME = "ROLLCALL V1";
+const CACHE_NAME = "ROLLCALL V2";
 
 const assets = []
 
